@@ -2,8 +2,8 @@ function init() {
 
     // Grabbing the dropdown element
     var selector = d3.select('#selDataset');
-
-    d3.json("samples.json").then(function(data){
+    
+    d3.json("/StarterCode/samples.json").then(function(data){
         var names = data.names;
 
         selector.selectAll('option')
@@ -28,7 +28,7 @@ function optionChanged(newID){
 
 
 function demographics(id){
-    d3.json("samples.json").then(function(sample){
+    d3.json("/StarterCode/samples.json").then(function(sample){
         const userInfoPanel = d3.select(".panel-body");
         var filtered = sample.metadata.filter(sample => sample.id == id)[0];
         console.log(filtered);
@@ -45,7 +45,7 @@ function demographics(id){
 }
 
 function charts(id){
-    d3.json("samples.json").then(function(sample){
+    d3.json("/StarterCode/samples.json").then(function(sample){
         var filtered = sample.samples.filter(sample => sample.id == id)[0];
         var top10otu = filtered.otu_ids.slice(0, 10).reverse();
         var top10sv = filtered.sample_values.slice(0, 10).reverse();
